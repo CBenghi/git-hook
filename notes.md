@@ -13,3 +13,7 @@ git config --local core.hooksPath .githooks/
 ```
 
 In the standard version of the pre-commit hook, only staged files are evaluated.
+
+## Command line
+
+To prevent the pre-commit hook being triggered, pass the `--no-verify` option to the command line.
