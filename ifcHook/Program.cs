@@ -1,7 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Preprocessing IFCs.");
-Console.WriteLine($"- running in {Environment.CurrentDirectory}");
-var list = ifcHook.GitInteraction.CallGit.Run("diff --name-only --cached");
-Console.WriteLine(list);
-Console.WriteLine("Cancelling commit");
-return -1;
+﻿Console.WriteLine("Preprocessing content.");
+var changedTxt = ifcHook.GitInterop.GetStaged().Where(x=>x.Extension == ".txt").ToList();
+if (changedTxt.Any())
+{
+    Console.WriteLine("Cancelling commit because of staged txt files.");
+    return 1;
+}
+return 0;
