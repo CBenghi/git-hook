@@ -38,10 +38,13 @@ public class TextChecker
             Console.WriteLine("Stopping becasue of parsing date problem.");
             return Outcome.failure;
         }
-        if (DateTime.Now - read < new TimeSpan(0,1,0))
+        var diff = DateTime.Now - read;
+        if (diff < new TimeSpan(0,1,0))
         {
+            Console.WriteLine($"unmodified becasue of diff: {diff}");
             return Outcome.unmodified;
         }
+        Console.WriteLine($"Added timestamp.");
         using var t = f.AppendText();
         t.WriteLine($"{DateTime.Now:o}");
         return Outcome.modified;
