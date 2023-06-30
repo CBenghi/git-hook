@@ -38,7 +38,7 @@ public class TextChecker
             Console.WriteLine("Stopping becasue of parsing date problem.");
             return Outcome.failure;
         }
-        if (DateTime.Now - read > new TimeSpan(0,1,0))
+        if (DateTime.Now - read < new TimeSpan(0,1,0))
         {
             return Outcome.unmodified;
         }
