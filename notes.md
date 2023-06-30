@@ -2,7 +2,7 @@
 
 ## Trigger
 
-This line may have empty whitespace at the end to trigger pre-commit hooks  
+This line may have empty whitespace at the end to trigger pre-commit hooks   
 
 ## Notes
 
