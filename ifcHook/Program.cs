@@ -3,6 +3,8 @@ var changedTxt = ifcHook.GitInterop.GetStaged().Where(x=>x.Extension == ".txt").
 foreach (var c in changedTxt)
 {
     var res = ifcHook.TextChecker.Fix(c);
+    if (res == ifcHook.TextChecker.Outcome.modified)
+        ifcHook.GitInterop.Add(c);
     if (res == ifcHook.TextChecker.Outcome.failure)
         return ConsoleInerop.ReportError($"Cancelling commit because of failed txt file fix {c.FullName}.");
 }

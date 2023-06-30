@@ -28,4 +28,10 @@ public class GitInterop
         pProcess.WaitForExit(); //Wait for process to finish
         return strOutput;
     }
+
+    internal static void Add(FileInfo c)
+    {
+        var command = $"add {c.FullName}";
+        Run(command);
+    }
 }
